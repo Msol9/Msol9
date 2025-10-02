@@ -19,4 +19,18 @@ class InvestigacionDeOperaciones {
             tabla[numRestricciones][i] = -coeficientes[i];
         }
     }
+    objetivo)
+    private int columnaPivote() {
+        int col = 0;
+        double valor = tabla[numRestricciones][0];
+        for (int i = 1; i < tabla[0].length - 1; i++) {
+            if (tabla[numRestricciones][i] < valor) {
+                valor = tabla[numRestricciones][i];
+                col = i;
+            }
+        }
+        // Si ya no hay valores negativos, se alcanzó el óptimo
+        if (valor >= 0) return -1;
+        return col;
+    }
 
