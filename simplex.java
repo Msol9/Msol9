@@ -64,3 +64,16 @@ class InvestigacionDeOperaciones {
             }
         }
     }
+    public void resolver() {
+        while (true) {
+            int colPivote = columnaPivote();
+            if (colPivote == -1) break; // Si no hay pivote, ya se alcanzó la solución óptima
+            int filaPivote = filaPivote(colPivote);
+            if (filaPivote == -1) {
+                System.out.println("Solución no acotada.");
+                return;
+            }
+            pivotear(filaPivote, colPivote); // Actualizamos la tabla con el nuevo pivote
+        }
+        mostrarResultado(); // Mostramos la solución final
+    }
