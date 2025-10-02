@@ -104,5 +104,11 @@ class InvestigacionDeOperaciones {
                 soluciones[i] = 0;
             }
         }
+
+        double valorZ = tabla[numRestricciones][tabla[0].length - 1];
+        if (!esMaximizacion) {
+            valorZ = -valorZ; // En minimización invertimos el signo
+        }
+
        
 }
