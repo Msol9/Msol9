@@ -129,3 +129,7 @@ public class Main {
         boolean esMaximizacion = opcion == 1;
     }
 }
+        System.out.print("Ingrese el número de variables: ");
+        int numVariables = sc.nextInt();
+        System.out.print("Ingrese el número de restricciones: ");
+        int numRestricciones = sc.nextInt();
