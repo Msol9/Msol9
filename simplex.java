@@ -127,9 +127,11 @@ public class Main {
         System.out.print("Seleccione una opción: ");
         int opcion = sc.nextInt();
         boolean esMaximizacion = opcion == 1;
-    }
-}
         System.out.print("Ingrese el número de variables: ");
         int numVariables = sc.nextInt();
         System.out.print("Ingrese el número de restricciones: ");
         int numRestricciones = sc.nextInt();
+        InvestigacionDeOperaciones simplex = new InvestigacionDeOperaciones(numVariables, numRestricciones, esMaximizacion);
+    }
+}
+        
