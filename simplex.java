@@ -121,5 +121,11 @@ class InvestigacionDeOperaciones {
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        System.out.println("Método Simplex - Maximizar o Minimizar");
+        System.out.println("1. Maximizar");
+        System.out.println("2. Minimizar");
+        System.out.print("Seleccione una opción: ");
+        int opcion = sc.nextInt();
+        boolean esMaximizacion = opcion == 1;
     }
 }
