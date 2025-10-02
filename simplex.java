@@ -132,6 +132,12 @@ public class Main {
         System.out.print("Ingrese el número de restricciones: ");
         int numRestricciones = sc.nextInt();
         InvestigacionDeOperaciones simplex = new InvestigacionDeOperaciones(numVariables, numRestricciones, esMaximizacion);
+         System.out.println("Ingrese los coeficientes de la función objetivo:");
+        double[] funcionObjetivo = new double[numVariables];
+        for (int i = 0; i < numVariables; i++) {
+            System.out.printf("Coeficiente x%d: ", i + 1);
+            funcionObjetivo[i] = sc.nextDouble();
+        }
     }
 }
         
