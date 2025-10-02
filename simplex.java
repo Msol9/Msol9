@@ -138,6 +138,24 @@ public class Main {
             System.out.printf("Coeficiente x%d: ", i + 1);
             funcionObjetivo[i] = sc.nextDouble();
         }
+        simplex.setFuncionObjetivo(funcionObjetivo);
+
+        System.out.println("Ingrese las restricciones (coeficientes y término independiente):");
+        for (int i = 0; i < numRestricciones; i++) {
+            System.out.printf("Restricción %d:\n", i + 1);
+            double[] coefRestriccion = new double[numVariables];
+            for (int j = 0; j < numVariables; j++) {
+                System.out.printf("Coeficiente x%d: ", j + 1);
+                coefRestriccion[j] = sc.nextDouble();
+            }
+            System.out.print("Término independiente (b): ");
+            double b = sc.nextDouble();
+            simplex.setRestriccion(i, coefRestriccion, b);
+        }
+
+        // Resolver el problema
+        simplex.resolver();
+
     }
 }
         
