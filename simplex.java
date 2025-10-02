@@ -110,5 +110,11 @@ class InvestigacionDeOperaciones {
             valorZ = -valorZ; // En minimización invertimos el signo
         }
 
+        System.out.println("Solución óptima:");
+        for (int i = 0; i < numVariables; i++) {
+            System.out.printf("x%d = %.4f\n", i + 1, soluciones[i]);
+        }
+        System.out.printf("Valor óptimo de la función objetivo: %.4f\n", valorZ);
+    }
        
 }
