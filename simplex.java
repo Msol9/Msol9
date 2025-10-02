@@ -1,3 +1,4 @@
+import java.util.Scanner;
 class InvestigacionDeOperaciones {
     private int numVariables;        // Número de variables de decisión
     private int numRestricciones;    // Número de restricciones
