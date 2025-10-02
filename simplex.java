@@ -4,7 +4,6 @@ class InvestigacionDeOperaciones {
     private int numRestricciones;    // Número de restricciones
     private double[][] tabla;        // Tabla del método simplex
     private boolean esMaximizacion;  // Indica si es un problema de maximización o minimización
-   
     public InvestigacionDeOperaciones(int numVariables, int numRestricciones, boolean esMaximizacion) {
         this.numVariables = numVariables;
         this.numRestricciones = numRestricciones;
@@ -19,6 +18,16 @@ class InvestigacionDeOperaciones {
             tabla[numRestricciones][i] = -coeficientes[i];
         }
     }
+    public void setRestriccion(int fila, double[] coeficientes, double b) {
+        // Colocamos los coeficientes de las variables de decisión
+        for (int i = 0; i < numVariables; i++) {
+            tabla[fila][i] = coeficientes[i];
+        }
+        // Variable de holgura (1 para esa fila)
+        tabla[fila][numVariables + fila] = 1;
+        // Término independiente (lado derecho)
+        tabla[fila][tabla[0].length - 1] = b;
+    }
     private int columnaPivote() {
         int col = 0;
         double valor = tabla[numRestricciones][0];
@@ -32,7 +41,6 @@ class InvestigacionDeOperaciones {
         if (valor >= 0) return -1;
         return col;
     }
-
     private int filaPivote(int col) {
         int fila = -1;
         double minRatio = Double.MAX_VALUE;
@@ -104,19 +112,16 @@ class InvestigacionDeOperaciones {
                 soluciones[i] = 0;
             }
         }
-
         double valorZ = tabla[numRestricciones][tabla[0].length - 1];
         if (!esMaximizacion) {
             valorZ = -valorZ; // En minimización invertimos el signo
         }
-
         System.out.println("Solución óptima:");
         for (int i = 0; i < numVariables; i++) {
             System.out.printf("x%d = %.4f\n", i + 1, soluciones[i]);
         }
         System.out.printf("Valor óptimo de la función objetivo: %.4f\n", valorZ);
-    }
-       
+    }    
 }
 public class Main {
     public static void main(String[] args) {
@@ -139,7 +144,6 @@ public class Main {
             funcionObjetivo[i] = sc.nextDouble();
         }
         simplex.setFuncionObjetivo(funcionObjetivo);
-
         System.out.println("Ingrese las restricciones (coeficientes y término independiente):");
         for (int i = 0; i < numRestricciones; i++) {
             System.out.printf("Restricción %d:\n", i + 1);
