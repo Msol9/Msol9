@@ -19,4 +19,17 @@ class InvestigacionDeOperaciones {
             tabla[numRestricciones][i] = -coeficientes[i];
         }
     }
+    // fila = número de restricción
+    // coeficientes = coeficientes de las variables en esa restricción
+    // b = término independiente de la restricción
+    public void setRestriccion(int fila, double[] coeficientes, double b) {
+        // Colocamos los coeficientes de las variables de decisión
+        for (int i = 0; i < numVariables; i++) {
+            tabla[fila][i] = coeficientes[i];
+        }
+        // Variable de holgura (1 para esa fila)
+        tabla[fila][numVariables + fila] = 1;
+        // Término independiente (lado derecho)
+        tabla[fila][tabla[0].length - 1] = b;
+    }
 
