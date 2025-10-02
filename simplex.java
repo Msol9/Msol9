@@ -80,6 +80,29 @@ class InvestigacionDeOperaciones {
 
     private void mostrarResultado() {
         double[] soluciones = new double[numVariables];
-        
+
+        for (int i = 0; i < numVariables; i++) {
+            boolean esBasica = false;
+            int filaBasica = -1;
+            for (int j = 0; j < numRestricciones; j++) {
+                if (tabla[j][i] == 1) {
+                    if (esBasica) {
+                        esBasica = false;
+                        break;
+                    } else {
+                        esBasica = true;
+                        filaBasica = j;
+                    }
+                } else if (tabla[j][i] != 0) {
+                    esBasica = false;
+                    break;
+                }
+            }
+            if (esBasica) {
+                soluciones[i] = tabla[filaBasica][tabla[0].length - 1];
+            } else {
+                soluciones[i] = 0;
+            }
+        }
        
 }
