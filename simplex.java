@@ -77,3 +77,9 @@ class InvestigacionDeOperaciones {
         }
         mostrarResultado(); // Mostramos la solución final
     }
+
+    private void mostrarResultado() {
+        double[] soluciones = new double[numVariables];
+        
+       
+}
