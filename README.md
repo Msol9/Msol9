@@ -13,4 +13,10 @@ class InvestigacionDeOperaciones {
         // Columnas = variables de decisión + variables de holgura + término independiente (lado derecho)
         tabla = new double[numRestricciones + 1][numVariables + numRestricciones + 1];
     }
+    public void setFuncionObjetivo(double[] coeficientes) {
+        for (int i = 0; i < numVariables; i++) {
+            // Se guardan como negativos (para que el criterio de optimalidad funcione igual en max y min)
+            tabla[numRestricciones][i] = -coeficientes[i];
+        }
+    }
 
