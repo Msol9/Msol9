@@ -1,9 +1,9 @@
 import java.util.Scanner;
 class InvestigacionDeOperaciones {
-    private int numVariables;        // Número de variables de decisión
-    private int numRestricciones;    // Número de restricciones
-    private double[][] tabla;        // Tabla del método simplex
-    private boolean esMaximizacion;  // Indica si es un problema de maximización o minimización
+    private int numVariables;        
+    private int numRestricciones;   
+    private double[][] tabla;        
+    private boolean esMaximizacion;  
     public InvestigacionDeOperaciones(int numVariables, int numRestricciones, boolean esMaximizacion) {
         this.numVariables = numVariables;
         this.numRestricciones = numRestricciones;
@@ -85,10 +85,8 @@ class InvestigacionDeOperaciones {
         }
         mostrarResultado(); // Mostramos la solución final
     }
-
     private void mostrarResultado() {
         double[] soluciones = new double[numVariables];
-
         for (int i = 0; i < numVariables; i++) {
             boolean esBasica = false;
             int filaBasica = -1;
@@ -156,10 +154,7 @@ public class Main {
             double b = sc.nextDouble();
             simplex.setRestriccion(i, coefRestriccion, b);
         }
-
-        // Resolver el problema
         simplex.resolver();
-
     }
 }
         
