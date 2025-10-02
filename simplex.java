@@ -32,3 +32,19 @@ class InvestigacionDeOperaciones {
         if (valor >= 0) return -1;
         return col;
     }
+
+    private int filaPivote(int col) {
+        int fila = -1;
+        double minRatio = Double.MAX_VALUE;
+        for (int i = 0; i < numRestricciones; i++) {
+            double elem = tabla[i][col];
+            if (elem > 0) { // Solo consideramos coeficientes positivos
+                double ratio = tabla[i][tabla[0].length - 1] / elem;
+                if (ratio < minRatio) {
+                    minRatio = ratio;
+                    fila = i;
+                }
+            }
+        }
+        return fila; // Retorna la fila elegida (o -1 si no existe → solución no acotada)
+    }
