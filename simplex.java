@@ -48,3 +48,19 @@ class InvestigacionDeOperaciones {
         }
         return fila; // Retorna la fila elegida (o -1 si no existe → solución no acotada)
     }
+    private void pivotear(int filaPivote, int colPivote) {
+        double pivote = tabla[filaPivote][colPivote];
+        // Normalizamos la fila pivote (hacemos que el pivote sea 1)
+        for (int j = 0; j < tabla[0].length; j++) {
+            tabla[filaPivote][j] /= pivote;
+        }
+        // Eliminamos los demás valores en la columna pivote
+        for (int i = 0; i < tabla.length; i++) {
+            if (i != filaPivote) {
+                double factor = tabla[i][colPivote];
+                for (int j = 0; j < tabla[0].length; j++) {
+                    tabla[i][j] -= factor * tabla[filaPivote][j];
+                }
+            }
+        }
+    }
